@@ -10,7 +10,7 @@ services:
     build: ./database/
     image: mysqlimage
     environment:
-      MYSQL_Root_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hiveGame
     ports:
       - '3306:3306'
