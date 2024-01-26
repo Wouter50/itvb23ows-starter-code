@@ -7,4 +7,16 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Jenkins run!'
+        }
+        succes {
+            echo 'Tests succes!'
+        }
+        failure {
+            echo 'tests failed!'
+        }
+
+    }
 }
