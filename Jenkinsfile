@@ -10,12 +10,11 @@ pipeline {
            steps {
             script { scannerHome = tool 'SonarQube Scanner' }
             withSonarQubeEnv('SonarQube') {
-                sh "${scannerHome}/bin/sonar-scanner
-                    -Dsonar.projectKey=[OWS-opdrachten]"
+                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWS-opdrachten"
             }
          }
 
-    }
+        }
     post {
         always {
             echo 'Jenkins run!'
