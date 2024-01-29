@@ -10,7 +10,7 @@ pipeline {
            steps {
                 script { scannerHome = tool 'Sonar scanner' }
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWS-opdrachten"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWS-Opdrachten"
                 }
             }
         }
