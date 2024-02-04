@@ -10,17 +10,12 @@
     $board = $_SESSION['board'];
     $player = $_SESSION['player'];
     $hand = $_SESSION['hand'];
-    $player_tiles = $_SESSION['hand'][$_SESSION['player']]
 
     $to = [];
     foreach ($GLOBALS['OFFSETS'] as $pq) {
         foreach (array_keys($board) as $pos) {
             $pq2 = explode(',', $pos);
-            $pos_to_check = ($pq[0] + $pq2[0]).','.($pq[1] + $pq2[1]);
-
-            if (checkIfValidPosition($pos_to_check, $board, $_SESSION['player']) && count($player_tiles) > 0){
-                $to[] = $pos_to_check;
-            }
+            $to[] = ($pq[0] + $pq2[0]).','.($pq[1] + $pq2[1]);
         }
     }
     $to = array_unique($to);
@@ -29,7 +24,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hive life</title>
+        <title>Hive</title>
         <style>
             div.board {
                 width: 60%;
@@ -107,7 +102,7 @@
             ?>
         </div>
         <div class="hand">
-            White hand: 
+            White:
             <?php
                 foreach ($hand[0] as $tile => $ct) {
                     for ($i = 0; $i < $ct; $i++) {
@@ -117,7 +112,7 @@
             ?>
         </div>
         <div class="hand">
-            Black hand:
+            Black:
             <?php
             foreach ($hand[1] as $tile => $ct) {
                 for ($i = 0; $i < $ct; $i++) {
@@ -133,18 +128,14 @@
             <select name="piece">
                 <?php
                     foreach ($hand[$player] as $tile => $ct) {
-                        if ($ct !== 0) {
-                            echo "<option value=\"$tile\">$tile</option>";
-                        }
+                        echo "<option value=\"$tile\">$tile</option>";
                     }
                 ?>
             </select>
             <select name="to">
                 <?php
                     foreach ($to as $pos) {
-                        if (checkIfValidPosition($pos, $board, $_SESSION['player'])) {
                         echo "<option value=\"$pos\">$pos</option>";
-                        }
                     }
                 ?>
             </select>
@@ -154,9 +145,6 @@
             <select name="from">
                 <?php
                     foreach (array_keys($board) as $pos) {
-                        if($board[$pos][0][0] != $player){
-                            continue;
-                        }
                         echo "<option value=\"$pos\">$pos</option>";
                     }
                 ?>

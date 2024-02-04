@@ -43,16 +43,5 @@ function slide($board, $from, $to) {
     if (!$board[$common[0]] && !$board[$common[1]] && !$board[$from] && !$board[$to]) return false;
     return min(len($board[$common[0]]), len($board[$common[1]])) <= max(len($board[$from]), len($board[$to]));
 }
-//check if position given is valid
-function checkIfValidPosition($position, $board, $player): bool {
-    
-    // Check if given position is occupied
-    if (isset($board[$position])){
-        return false
-    } elseif (count($board) && !hasNeighBour($to, $board)){
-        return false
-    } elseif (array_sum($hand)< 11 && !neighboursAreSameColor($player, $position, $board))
-    
-    
-}
 
+?>
