@@ -128,14 +128,18 @@
             <select name="piece">
                 <?php
                     foreach ($hand[$player] as $tile => $ct) {
+                        if($ct > 0){
                         echo "<option value=\"$tile\">$tile</option>";
+                        }
                     }
                 ?>
             </select>
             <select name="to">
                 <?php
                     foreach ($to as $pos) {
-                        echo "<option value=\"$pos\">$pos</option>";
+                        if(checkIfPositionAvailable($board, $hand[$player], $player, $pos)){
+                            echo "<option value=\"$pos\">$pos</option>";
+                            }
                     }
                 ?>
             </select>
@@ -145,7 +149,9 @@
             <select name="from">
                 <?php
                     foreach (array_keys($board) as $pos) {
+                        if($board[$pos][0][0] != $player){
                         echo "<option value=\"$pos\">$pos</option>";
+                        }
                     }
                 ?>
             </select>
