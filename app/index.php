@@ -149,8 +149,8 @@
             <select name="from">
                 <?php
                     foreach (array_keys($board) as $pos) {
-                        if($board[$pos][0][0] != $player){
-                        echo "<option value=\"$pos\">$pos</option>";
+                        if($board[$pos][0][0] == $player){
+                            echo "<option value=\"$pos\">$pos</option>";
                         }
                     }
                 ?>
