@@ -55,10 +55,12 @@ function checkIfPositionAvailable($board, $hand, $player, $to){
     elseif (count($board) && !hasNeighBour($to, $board)){
         return false;
     }
-    elseif (array_sum($hand) < 11 && !neighboursAreSameColor($player, $to, $board)){
+    elseif (array_sum($hand) < 11 && !neighboursAreSameColor($player, $to, $board) ){
         return false;
     }
     return true;
+
+   
 }
 
 ?>
