@@ -1,1 +1,1 @@
-{"version":1,"defects":{"BugTest::testForQueenBug":7},"times":{"BugTest::testForQueenBug":0.015}}
+{"version":1,"defects":{"BugTest::testForQueenBug":7,"BugTest::testForDropdownIncludeWrongTile":5,"BugTest::testForDropdownHasOccupiedPosition":7,"BugTest::testIfHasNeighbour":7},"times":{"BugTest::testForQueenBug":0.219,"BugTest::testForDropdownIncludeWrongTile":0,"BugTest::testForDropdownHasOccupiedPosition":0,"BugTest::testForInvalidMove":0.015,"BugTest::testIfHasNeighbour":0,"BugTest::testIfEmptyHasNeighbour":0,"BugTest::testIfIsNeighbour":0}}

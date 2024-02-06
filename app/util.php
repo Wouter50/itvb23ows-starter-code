@@ -51,11 +51,9 @@ function checkIfPositionAvailable($board, $hand, $player, $to){
     
     if (isset($board[$to])){
         return false;
-    }
-    elseif (count($board) && !hasNeighBour($to, $board)){
+    } elseif (count($board) && !hasNeighBour($to, $board)){
         return false;
-    }
-    elseif (array_sum($hand) < 11 && !neighboursAreSameColor($player, $to, $board) ){
+    } elseif (array_sum($hand) < 11 && !neighboursAreSameColor($player, $to, $board) ){
         return false;
     }
     return true;
