@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-include_once('app\util.php');
+use util;
 
 
 final class GameFunctionTest extends TestCase {
@@ -41,7 +41,8 @@ final class GameFunctionTest extends TestCase {
 
         ];
         $posToCheck = "0,1";
-        $this ->assertEquals(true, HasNeighbour($posToCheck, $board));
+        $answer = HasNeighbour($posToCheck, $board);
+        $this ->assertEquals(true, $answer);
     }
 
     public function testForDropdownHasOccupiedPosition(){
@@ -53,19 +54,31 @@ final class GameFunctionTest extends TestCase {
         $hand = [["Q"=>0,"B"=>2,"S"=>2,"A"=>3,"G"=>3],["Q"=>0,"B"=>2,"S"=>2,"A"=>3,"G"=>3]];
         $player = 0;
         $to = "1,0";
+
         $valid = checkIfPositionAvailable($board, $hand[$player], $player, $to);
+
         $this ->assertFalse($valid);
     }
+    public function testIfisNotNeighbour(): void
+    {
+        $a = '0,0';
+        $b = '1,-2';
+
+        $answer = isNeighbour($a, $b);
+
+        
+        $this->assertEquals(false, $answer);
+    }
+
     public function testIfIsNeighbour(): void
     {
         $a = '0,0';
         $b = '1,-1';
-        $c = '1,-2';
+
+        $answer = isNeighbour($a,$b);
 
         // wel neighbours
-        $this->assertEquals(true, isNeighbour($a, $b));
-        // niet neighbours
-        $this->assertEquals(false, isNeighbour($a, $c));
+        $this->assertEquals(true, $answer);
     }
 
 }

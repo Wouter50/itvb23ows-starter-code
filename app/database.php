@@ -14,4 +14,3 @@ function set_state($state) {
 return new mysqli('app-db', 'root', 'root', 'hiveGame');
 
 
-?>
