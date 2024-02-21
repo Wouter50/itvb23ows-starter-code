@@ -77,7 +77,18 @@ function checkIfPositionAvailable($board, $hand, $player, $to){
         return false;
     }
     return true;
+}
 
-   
+function checkValidGrasshopper($board, $player, $from, $to) {
+    echo $from;
+    return true;
+}
+
+function checkValidAnt($board, $player, $from, $to) {
+    return true;
+}
+
+function checkValidSpider($board, $player, $from, $to) {
+    return true;
 }
 

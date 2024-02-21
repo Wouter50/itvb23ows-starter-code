@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use util;
+include_once 'app\util.php';
 
 
 final class GameFunctionTest extends TestCase {
