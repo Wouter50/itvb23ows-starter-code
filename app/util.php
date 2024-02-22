@@ -92,3 +92,14 @@ function checkValidSpider($board, $player, $from, $to) {
     return true;
 }
 
+function checkIfPassingEmpty($board, $from, $to){
+    //checker for grasshopper if jumping over empty tiles
+}
+
+function checkIfStuck(){
+    //check if tile is stuck between other tiles
+
+}
+
+
+
