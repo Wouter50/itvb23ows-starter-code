@@ -8,6 +8,7 @@ final class AntTest extends TestCase {
 
     //test if ant can do unlimited moves
     public function testIfUnlimitedSlides(){
+        $player = 0;
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -24,6 +25,7 @@ final class AntTest extends TestCase {
 
     //test if ant can slide like queen
     public function testIfSlideLikeQueen(){
+        $player = 0;
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -39,6 +41,7 @@ final class AntTest extends TestCase {
 
     //test if ant can do unlimited moves
     public function testIfNotPreviousTile(){
+        $player = 0;
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -53,6 +56,7 @@ final class AntTest extends TestCase {
 
     //test if ant not moving to occupied Tile
     public function testIfNotOccupied(){
+        $player = 0;
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],

@@ -56,6 +56,10 @@ else {
                 }
             } elseif ($tile[1] == "G"){
                 checkValidGrasshopper($board, $player, $from, $to);
+            } elseif ($tile[1] == "A"){
+                checkValidAnt($board, $player, $from, $to);
+            } elseif ($tile[1] == "S"){
+                checkValidSpider($board, $player, $from, $to);
             }
         }
     }
