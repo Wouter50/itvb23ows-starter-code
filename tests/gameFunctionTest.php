@@ -88,7 +88,7 @@ final class GameFunctionTest extends TestCase {
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
             "-1,1" => [[1, 'G']],
-            "1,0" => [[1, 'B']],
+            "1,-1" => [[1, 'B']],
             "-1,0" => [[1, 'A']],
             "0,-1" => [[1, 'A']]
         ];
@@ -105,6 +105,7 @@ final class GameFunctionTest extends TestCase {
             "-1,1" => [[1, 'G']],
             "1,0" => [[1, 'B']],
             "-1,0" => [[1, 'A']],
+            "0,2" => [[1, 'A']]
         ];
         $passAllowed = checkifPassable($board, $player);
         $this->assertEquals(false, $passAllowed);

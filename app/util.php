@@ -25,6 +25,16 @@ function hasNeighBour($a, $board) {
     }
 }
 
+function countNeighBours($a, $board) {
+    $counter = 0;
+    foreach (array_keys($board) as $b) {
+        if (isNeighbour($a, $b)) {
+            $counter++;
+        }
+    }
+    return $counter -1;
+}
+
 function neighboursAreSameColor($player, $a, $board) {
     foreach ($board as $b => $st) {
         if (!$st) {
@@ -199,60 +209,6 @@ function checkValidSpider($board, $player, $from, $to) {
     return true;
 }
 
-function checkIfPassingEmpty($board, $from, $to){
-    //checker for grasshopper if jumping over empty tiles
-    $fromArray = explode(',', $from);
-    $fromX = $fromArray[0];
-    $fromY = $fromArray[1];
-    $toArray = explode(',', $to);
-    $toX = $toArray[0];
-    $toY = $toArray[1];
-
-    if ($fromX != $toX){
-        if ($fromX < $toX){
-            $increment = 1;
-        } else {
-            $increment = -1;
-        }
-
-        while ($fromX != $toX){
-            $fromX = $fromX + $increment;
-            $passingTiles = "$fromY,$fromY";
-            if($passingTiles == $to){
-                break;
-            }
-            if(!isset($board[$passingTiles])){
-                return false;
-            }
-            echo "From ";
-            echo $passingTiles;
-        }
-
-    }
-    if ($fromY != $toY){
-        if ($fromY < $toY){
-            $increment = 1;
-        } else {
-            $increment = -1;
-        }
-
-        while ($fromY != $toY){
-            $fromY = $fromY + $increment;
-            $passingTiles = "$fromY,$fromY";
-            echo "To:  + $passingTiles";
-            if($passingTiles == $to){
-                break;
-            }
-            if(!isset($board[$passingTiles])){
-                return false;
-            }
-        }
-
-    }
-    return true;
-
-}
-
 function checkIfMovingThreeTiles($to, $from){
    //check if spider moves three tiles away
    $count = 0;
@@ -262,8 +218,22 @@ function checkIfMovingThreeTiles($to, $from){
 
 function checkifPassable($board, $player){
     //check if allowed to pass or not
-    return false;
-
+    $amountStuck = 0;
+    foreach(array_keys($board) as $pos){
+        $tile = array_pop($board[$pos]);
+        if($tile[0] == $player && $tile[1] != 'G'){
+            echo "$tile[0] op $pos \n";
+            echo countNeighBours($pos, $board);
+            if(countNeighBours($pos, $board) != 5){
+                return false;
+            } else {
+                $amountStuck++;
+            }
+        }
+    }
+    if ($amountStuck > 0){
+        return true;
+    }
 }
 
 
