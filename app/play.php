@@ -2,7 +2,7 @@
 
 session_start();
 
-use util;
+include_once 'util.php';
 
 $piece = $_POST['piece'];
 $to = $_POST['to'];

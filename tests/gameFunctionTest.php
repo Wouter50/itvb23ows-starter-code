@@ -84,6 +84,7 @@ final class GameFunctionTest extends TestCase {
     public function testIfPassWhenAble(): void{
         //test if player is able to pass when they are allowed to
         $player = 0;
+        $hand = [];
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -92,13 +93,14 @@ final class GameFunctionTest extends TestCase {
             "-1,0" => [[1, 'A']],
             "0,-1" => [[1, 'A']]
         ];
-        $passAllowed = checkifPassable($board, $player);
+        $passAllowed = checkifPassable($board, $player, $hand);
         $this->assertEquals(true, $passAllowed);
     }
 
     public function testIfNotPassWhenUnable(): void{
         //test if player is unable to pass when they are not allowed to
         $player = 0;
+        $hand = [];
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -107,7 +109,7 @@ final class GameFunctionTest extends TestCase {
             "-1,0" => [[1, 'A']],
             "0,2" => [[1, 'A']]
         ];
-        $passAllowed = checkifPassable($board, $player);
+        $passAllowed = checkifPassable($board, $player, $hand);
         $this->assertEquals(false, $passAllowed);
     }
     public function testIfWinResult(): void{

@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    use util;
+
+    include_once 'util.php';
     
 
     if (!isset($_SESSION['board'])) {

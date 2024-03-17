@@ -216,7 +216,7 @@ function checkIfMovingThreeTiles($to, $from){
 
 }
 
-function checkifPassable($board, $player){
+function checkifPassable($board, $player, $hand){
     //check if allowed to pass or not
     $amountStuck = 0;
     foreach(array_keys($board) as $pos){
@@ -229,7 +229,10 @@ function checkifPassable($board, $player){
             } else {
                 $amountStuck++;
             }
+            }
         }
+    if (array_sum($hand) > 0){
+        return false;
     }
     if ($amountStuck > 0){
         return true;
