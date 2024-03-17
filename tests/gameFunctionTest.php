@@ -142,7 +142,7 @@ final class GameFunctionTest extends TestCase {
     public function testIfDrawResult(): void{
         //test if draw is detected, built is situation where there is a draw
         //since it doesn't matter when the last tile is placed, because this would trigger checkifwin first.
-        $player = 0;
+        //forgot placing tile at 0,2 at previous commit
         $board = [
             "0,0" => [[0, 'Q']],
             "0,1" => [[1, 'Q']],
@@ -152,9 +152,10 @@ final class GameFunctionTest extends TestCase {
             "0,-1" => [[1, 'A']],
             "1,-1" => [[1, 'A']],
             "-1,2" => [[0, 'A']],
-            "1,1" => [[0, 'A']]
+            "1,1" => [[0, 'A']],
+            "0,2" => [[0, 'A']]
         ];
-        $isdraw = checkifDraw($board, $player);
+        $isdraw = checkifDraw($board);
         $this->assertEquals(true, $isdraw);
     }
 

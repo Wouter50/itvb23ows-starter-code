@@ -235,7 +235,46 @@ function checkifPassable($board, $player){
         return true;
     }
 }
-
+function checkifWin($board, $player){
+    //check if filled in player loses, and other player wins
+    foreach(array_keys($board) as $pos){
+        $tile = array_pop($board[$pos]);
+        if($tile[0] == $player && $tile[1] == 'Q'){
+            echo "$tile[0] op $pos \n";
+            //echo countNeighBours($pos, $board);
+            if(countNeighBours($pos, $board) == 6){
+                return true;
+            } 
+        }
+    }
+    return false;
+}
+function checkifDraw($board){
+    //check if both players have queen surrounded at the same time.
+    $amountStuck = 0;
+    foreach(array_keys($board) as $pos){
+        $tile = array_pop($board[$pos]);
+        if($tile[0] == 0 && $tile[1] == 'Q'){
+            if(countNeighBours($pos, $board) == 6){
+                //queen stuck for p1
+                $amountStuck++;
+            }
+        }
+        if($tile[0] == 1 && $tile[1] == 'Q'){
+            if(countNeighBours($pos, $board) == 6){
+                //queen stuck for p2
+                $amountStuck++;
+            }
+        }
+    }
+    if ($amountStuck == 2){
+        //echo " vast = $amountStuck \n";
+        return true;
+    } else {
+        //echo "vast = $amountStuck \n";
+        return false;
+    }
+}
 
 
 
