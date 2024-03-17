@@ -238,3 +238,5 @@ function checkifPassable($board, $player){
 
 
 
+
+

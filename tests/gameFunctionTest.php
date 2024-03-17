@@ -110,5 +110,52 @@ final class GameFunctionTest extends TestCase {
         $passAllowed = checkifPassable($board, $player);
         $this->assertEquals(false, $passAllowed);
     }
+    public function testIfWinResult(): void{
+        //test if win is detected
+        $player = 0;
+        $board = [
+            "0,0" => [[0, 'Q']],
+            "0,1" => [[1, 'Q']],
+            "-1,1" => [[1, 'G']],
+            "1,0" => [[1, 'B']],
+            "-1,0" => [[1, 'A']],
+            "0,-1" => [[1, 'A']],
+            "1,-1" => [[1, 'A']]
+        ];
+        $iswin = checkifWin($board, $player);
+        $this->assertEquals(true, $iswin);
+    }
+    public function testIfNotWinResult(): void{
+        //test if win is detected
+        $player = 0;
+        $board = [
+            "0,0" => [[0, 'Q']],
+            "0,1" => [[1, 'Q']],
+            "-1,1" => [[1, 'G']],
+            "1,0" => [[1, 'B']],
+            "-1,0" => [[1, 'A']],
+            "0,-1" => [[1, 'A']],
+        ];
+        $iswin = checkifWin($board, $player);
+        $this->assertEquals(false, $iswin);
+    }
+    public function testIfDrawResult(): void{
+        //test if draw is detected, built is situation where there is a draw
+        //since it doesn't matter when the last tile is placed, because this would trigger checkifwin first.
+        $player = 0;
+        $board = [
+            "0,0" => [[0, 'Q']],
+            "0,1" => [[1, 'Q']],
+            "-1,1" => [[1, 'G']],
+            "1,0" => [[1, 'B']],
+            "-1,0" => [[1, 'A']],
+            "0,-1" => [[1, 'A']],
+            "1,-1" => [[1, 'A']],
+            "-1,2" => [[0, 'A']],
+            "1,1" => [[0, 'A']]
+        ];
+        $isdraw = checkifDraw($board, $player);
+        $this->assertEquals(true, $isdraw);
+    }
 
 }
