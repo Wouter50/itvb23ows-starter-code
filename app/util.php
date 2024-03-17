@@ -193,6 +193,9 @@ function checkValidSpider($board, $player, $from, $to) {
     if (count($board) && !hasNeighBour($to, $board)) {
         return false;
     }
+    if (!checkIfMovingThreeTiles($to, $from)){
+        return false;
+    }
     return true;
 }
 
@@ -246,19 +249,20 @@ function checkIfPassingEmpty($board, $from, $to){
         }
 
     }
-
-    
     return true;
-
-    
-
 
 }
 
-function checkIfStuck(){
-    //check if tile is stuck between other tiles
+function checkIfMovingThreeTiles($to, $from){
+   //check if spider moves three tiles away
+   $count = 0;
+   return true;
 
-    //do isNeigbour on all tiles around it
+}
+
+function checkifPassable($board, $player){
+    //check if allowed to pass or not
+    return false;
 
 }
 
