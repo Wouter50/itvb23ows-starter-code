@@ -16,7 +16,7 @@ final class AntTest extends TestCase {
             "1,1" => [[1, 'B']]
         ];
         $from = "0,-1";
-        $to = "0,3";
+        $to = "0,2";
         $valid = checkValidAnt($board, $player, $from, $to);
         $this ->assertEquals(true, $valid);
         

@@ -177,6 +177,9 @@ function checkValidAnt($board, $player, $from, $to) {
     if (isset($board[$to])){
         return false;
     }
+    if (count($board) && !hasNeighBour($to, $board)) {
+        return false;
+    }
     return true;
 }
 
@@ -185,6 +188,9 @@ function checkValidSpider($board, $player, $from, $to) {
         return false;
     }
     if (isset($board[$to])){
+        return false;
+    }
+    if (count($board) && !hasNeighBour($to, $board)) {
         return false;
     }
     return true;
