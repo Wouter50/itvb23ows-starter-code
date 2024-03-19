@@ -243,11 +243,11 @@ function checkifWin($board, $player){
     foreach(array_keys($board) as $pos){
         $tile = array_pop($board[$pos]);
         if($tile[0] == $player && $tile[1] == 'Q'){
-            echo "$tile[0] op $pos \n";
+            echo "$tile[1] op $pos \n";
             //echo countNeighBours($pos, $board);
             if(countNeighBours($pos, $board) == 6){
                 return true;
-            } 
+            }
         }
     }
     return false;
@@ -258,6 +258,7 @@ function checkifDraw($board){
     foreach(array_keys($board) as $pos){
         $tile = array_pop($board[$pos]);
         if($tile[0] == 0 && $tile[1] == 'Q'){
+            //$_SESSION['error'] = "ayaya";
             if(countNeighBours($pos, $board) == 6){
                 //queen stuck for p1
                 $amountStuck++;
@@ -276,6 +277,23 @@ function checkifDraw($board){
     } else {
         //echo "vast = $amountStuck \n";
         return false;
+    }
+}
+
+function checkIfGameOver($board){
+    if(checkifWin($board, 0)){
+        $_SESSION['game_over'] = true;
+        $_SESSION['winner'] = 1;
+
+    }
+    if(checkifWin($board, 1)){
+        $_SESSION['game_over'] = true;
+        $_SESSION['winner'] = 0;
+
+    }
+    if(checkifDraw($board)){
+        $_SESSION['game_over'] = true;
+        $_SESSION['winner'] = 'draw';
     }
 }
 

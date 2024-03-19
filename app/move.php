@@ -55,12 +55,20 @@ else {
                     $_SESSION['error'] = 'Tile must slide';
                 }
             } elseif ($tile[1] == "G"){
-                checkValidGrasshopper($board, $player, $from, $to);
+                if (!checkValidGrasshopper($board, $player, $from, $to)){
+                    $_SESSION['error'] = 'invalid move for grasshopper';
+                }
             } elseif ($tile[1] == "A"){
-                checkValidAnt($board, $player, $from, $to);
+                if (!checkValidAnt($board, $player, $from, $to)){
+                    $_SESSION['error'] = 'invalid move for ant';
+                }
             } elseif ($tile[1] == "S"){
-                checkValidSpider($board, $player, $from, $to);
+                if(!checkValidSpider($board, $player, $from, $to)){
+                    $_SESSION['error'] = 'invalid move for spider';
+                }
             }
+            checkIfGameOver($board);
+            
         }
     }
     if (isset($_SESSION['error'])) {
@@ -88,6 +96,8 @@ else {
     }
     $_SESSION['board'] = $board;
 }
+
+
 
 header('Location: index.php');
 

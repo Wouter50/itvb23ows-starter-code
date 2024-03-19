@@ -173,6 +173,18 @@
             <input type="submit" value="Restart">
         </form>
         <strong><?php if (isset($_SESSION['error'])) {echo $_SESSION['error']; unset($_SESSION['error']);} ?></strong>
+        <strong><?php if ($_SESSION['game_over'] == true) {
+            echo "The game is over! the result is";
+            if($_SESSION['winner'] = 1){
+                echo " Black wins!";
+            } elseif ($_SESSION['winner'] = 0){
+                echo " White wins!";
+            } elseif ($_SESSION['winner'] = 'draw'){
+                echo " It's a draw!";
+            }
+            unset($_SESSION['error']);
+        }
+            ?></strong>
         <ol>
             <?php
                 $db = include_once 'database.php';
