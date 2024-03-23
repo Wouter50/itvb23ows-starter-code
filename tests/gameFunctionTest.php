@@ -161,4 +161,16 @@ final class GameFunctionTest extends TestCase {
         $this->assertEquals(true, $isdraw);
     }
 
+    public function testIfGetAIMove(): void {
+        $turnNumber = 2;
+        $board = [
+            "0,0" => [[0, 'Q']],
+        ];
+
+        $hand = [["Q"=>0,"B"=>2,"S"=>2,"A"=>3,"G"=>3],["Q"=>1,"B"=>2,"S"=>2,"A"=>3,"G"=>3]];
+
+        $canGetAIMove = getAIMove($turnNumber, $board, $hand);
+        $this->assertNotNull($canGetAIMove);
+    }
+
 }

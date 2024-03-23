@@ -297,6 +297,13 @@ function checkIfGameOver($board){
     }
 }
 
+function getAIMove($moveNumber ,$hand, $board){
+
+    
+
+
+}
+
 
 
 
