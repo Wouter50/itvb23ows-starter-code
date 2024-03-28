@@ -297,6 +297,29 @@ function checkIfGameOver($board){
     }
 }
 
+function undo(){
+    $db = include_once 'database.php';
+    $stmt = $db->prepare('SELECT * FROM moves WHERE id = '.$_SESSION['last_move']);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_array();
+
+    if($result->num_rows == 0){
+        $_SESSION['error'] = "No moves to undo";
+        return false;
+    }
+    //delete last move
+    $stmt = $db->prepare('DELETE FROM moves WHERE id = '.$_SESSION['last_move']);
+    $stmt->execute();
+    //switch players
+    $_SESSION['player'] = 1 - $_SESSION['player'];
+
+    $_SESSION['last_move'] -= 1;
+
+    //need anger management
+    return true;
+
+}
+
 
 
 
