@@ -26,3 +26,8 @@ To start Docker container:
 ```
 docker compose up --build
 ```
+
+To test in VS code: 
+```
+"vendor/bin/phpunit tests"
+```
